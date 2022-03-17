@@ -1,0 +1,29 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-success bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="/"><span>Bookers</span></a>
+
+
+
+        <ul class="navbar-nav ml-auto">
+        
+        <%  customer_signed_in? or admin_signed_in? %>
+
+          <li>
+            logout
+          </li>
+
+        <% else %>
+
+          <li>
+            login
+          </li>
+
+        <% end %>
+        </ul>
+
+      </div>
+
+    </div>
+  </nav>
+</header>
