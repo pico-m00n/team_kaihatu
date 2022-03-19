@@ -9,15 +9,13 @@
         <tbody>
           <tr>
            <td><%= f.label :名前 %></td>
-           <td>(姓)</td>
-           <td><%= f.text_field :name_family, placeholder: "令和" %></td>
+           <td>(姓)<%= f.text_field :name_family, placeholder: "令和" %></td>
            <td>(名) <%= f.text_field :name_first %></td>
          </tr>
 
           <tr>
             <td><%= f.label :フリガナ %></td>
-            <td>(セイ)</td>
-            <td><%= f.text_field :name_kana_family %></td>
+            <td>(セイ)<%= f.text_field :name_kana_family %></td>
             <td>(メイ) <%= f.text_field :name_kana_first %></td>
           </tr>
 
