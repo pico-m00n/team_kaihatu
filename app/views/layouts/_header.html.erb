@@ -7,10 +7,10 @@
 
         <ul class="navbar-nav ml-auto">
         
-        <%  customer_signed_in? or admin_signed_in? %>
+        <% if customer_signed_in? or admin_signed_in? %>
 
           <li>
-            logout
+           <%= link_to "logout", destroy_customer_session_path, method: :delete %>
           </li>
 
         <% else %>
