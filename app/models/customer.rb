@@ -8,5 +8,11 @@ class Customer < ApplicationRecord
 
   has_many :shipping_adresses
   has_many :orders
-  has_many :cart_items
+  
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
+  
+   has_many :cart_items
+
 end
