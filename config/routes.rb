@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-　root to: 'customers#show'
+
   get "home/about"=>"homes#about"
   patch 'customers/quit' => 'customers#out', as: 'out'
   resource :customers, only: [:show, :edit, :update]
