@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+　root to: 'customers#show'
+  resource :customers, only: [:show, :edit, :update]
+  resources :shipping_addresses, only: [:index, :edit, :create, :update, :destroy]
 
   devise_for :customers, controllers: {
   sessions:      'customers/sessions',
