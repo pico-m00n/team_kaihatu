@@ -1,14 +1,18 @@
 Rails.application.routes.draw do
- 
+
   root to: 'customers#show'
+  get "home/about"=>"homes#about"
+  patch 'customers/quit' => 'customers#out', as: 'out'
   resource :customers, only: [:show, :edit, :update]
   resources :shipping_addresses, only: [:index, :edit, :create, :update, :destroy]
+  resources :orders, only: [:index, :show]
 
   devise_for :customers, controllers: {
   sessions:      'customers/sessions',
   passwords:     'customers/passwords',
   registrations: 'customers/registrations'
 }
+
   devise_for :admins, controllers: {
   sessions:      'admins/sessions',
   passwords:     'admins/passwords',
