@@ -22,6 +22,7 @@ namespace :customers do
   delete 'cart_items' => 'cart_items#all_destroy', as: 'all_destroy'
   resources :orders, only: [:create, :new, :index, :show]
   resources :shipping_addresses, only: [:index, :create, :destroy, :edit, :update]
+
 end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
