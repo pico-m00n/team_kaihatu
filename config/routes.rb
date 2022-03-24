@@ -1,14 +1,17 @@
 Rails.application.routes.draw do
 
-  root to: "homes#top"
+  get "home/about"=>"homes#about"
+  patch 'customers/quit' => 'customers#out', as: 'out'
   resource :customers, only: [:show, :edit, :update]
   resources :shipping_addresses, only: [:index, :edit, :create, :update, :destroy]
+  resources :orders, only: [:index, :show]
 
   devise_for :customers, controllers: {
   sessions:      'customers/sessions',
   passwords:     'customers/passwords',
   registrations: 'customers/registrations'
 }
+
   devise_for :admins, controllers: {
   sessions:      'admins/sessions',
   passwords:     'admins/passwords',
@@ -16,14 +19,13 @@ Rails.application.routes.draw do
 }
 
 
-namespace :customers do
-  resources :orders
-  resources :cart_items, only: [:index, :create, :update, :destroy]
-  delete 'cart_items' => 'cart_items#all_destroy', as: 'all_destroy'
-  resources :orders, only: [:create, :new, :index, :show]
-  resources :shipping_addresses, only: [:index, :create, :destroy, :edit, :update]
 
-end
+#会員側のルーティング
+  namespace :admins do
+    resources :customers, only: [:index, :show, :edit, :update]
+    resources :orders, only: [:index, :show, :update]
+    get 'orders/show' => 'orders#show'
+  end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

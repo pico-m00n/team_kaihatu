@@ -1,22 +1,42 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-success bg-dark">
+  <nav class="navbar navbar-expand-lg  bg-warning">
     <div class="container">
-      <a class="navbar-brand" href="/"><span>Bookers</span></a>
+      <a class="navbar-brand text-dark" href="/"><span>Nagono Cake</span></a>
 
 
 
-        <ul class="navbar-nav ml-auto">
-        
+        <ul class="navbar-nav ml-auto text-dark">
+
         <% if customer_signed_in? or admin_signed_in? %>
 
           <li>
-           <%= link_to "logout", destroy_customer_session_path, method: :delete %>
+           <%= link_to customers_path, method: :get do %>
+           マイページ
+           <% end %>
+          </li>
+          <li>
+           <%= link_to "商品一覧", destroy_customer_session_path, method: :delete %>
+          </li>
+          <li>
+           <%= link_to "カート", destroy_customer_session_path, method: :delete %>
+          </li>
+          <li>
+           <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
           </li>
 
         <% else %>
 
           <li>
-            login
+           <%= link_to "About", home_about_path, method: :get %>
+          </li>
+          <li>
+           <%= link_to "商品一覧", destroy_customer_session_path, method: :delete %>
+          </li>
+          <li>
+           <%= link_to "新規登録", new_customer_registration_path, method: :delete %>
+          </li>
+          <li>
+           <%= link_to "ログイン", new_customer_session_path, method: :get %>
           </li>
 
         <% end %>
