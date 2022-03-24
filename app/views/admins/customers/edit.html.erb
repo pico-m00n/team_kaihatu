@@ -1,0 +1,62 @@
+<div class="container px-5 px-sm-0">
+  <h2><%= @customer.name_family %><%= @customer.name_first %>さんの会員情報編集</h2>
+  <div class="row">
+    <%= form_with method: :patch, local: true do |f| %>
+      <table class="table table-borderless">
+        <tbody>
+
+          <tr>
+            <td><%= f.label :会員 %>ID</td>
+            <td><%= @customer.id %>　</td>
+          </tr>
+
+          <tr>
+            <td><%= f.label :氏名 %></td>
+            <td><%= f.text_field :family_name %>　　<%= f.text_field :first_name %></td>
+          </tr>
+
+          <tr>
+            <td><%= f.label :フリガナ %></td>
+            <td><%= f.text_field :family_kana_name %>　　<%= f.text_field :first_kana_name %></td>
+          </tr>
+
+          <tr>
+            <td><%= f.label :郵便番号 %></td>
+            <td><%= f.text_field :post_code %></td>
+          </tr>
+
+          <tr>
+            <td><%= f.label :住所 %></td>
+            <td><%= f.text_field :address %></td>
+          </tr>
+
+          <tr>
+            <td><%= f.label :電話番号 %></td>
+            <td><%= f.text_field :phone_number %></td>
+          </tr>
+
+          <tr>
+            <td><%= f.label :メールアドレス %></td>
+            <td><%= f.text_field :email %></td>
+          </tr>
+
+          <tr>
+            <td><%= f.label :会員ステータス %></td>
+            <td>
+              <%= f.radio_button :is_deleted, :vilidity %>
+              <%= f.label :有効　, class: "is_deleted_lebel" %>
+              <%= f.radio_button :is_deleted, :quit %>
+              <%= f.label :退会, class: "is_deleted_label" %>
+            </td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td><%= f.submit "変更を保存", class:"btn btn-success" %></td>
+          </tr>
+
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+</div>
