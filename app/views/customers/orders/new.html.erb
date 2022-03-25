@@ -7,8 +7,6 @@
 
 		<%= form_with(url: customers_orders_path, method: :post) do |form| %>
 			<h3>支払方法</h3>
-
-			<!-- form.radio_button :カラム名, :保存される値(enumの番号) -->
 			<span>　　　</span><%= form.radio_button :method, 0, checked: "checked" %>
 	  		<%= form.label :クレジットカード %><br>
 	  		<span>　　　</span><%= form.radio_button :method, 1 %>
@@ -27,7 +25,7 @@
 
 			<span>　　　</span><%= form.radio_button :a_method, 1 %>
 			<%= form.label :登録済住所から選択 %><br>
-			<span>　　　　　</span><%= form.collection_select :shipping_addresses_for_order, @addresses, :id, :shipping_addresses_for_view %><br>
+			<span>　　　　　</span><%= form.collection_select :shipping_address_for_order, @addresses, :id, :shipping_addresses_for_view %><br>
 
 
 

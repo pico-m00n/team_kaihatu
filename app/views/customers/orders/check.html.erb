@@ -11,20 +11,20 @@
           </tr>
         </thead>
         <tbody>
-          <% @cart_items.each do |cart_items| %>
+          <% @cart_items.each do |cart_item| %>
             <tr>
               <td class="text-left">
                 <%= attachment_image_tag( cart_items.item, :image, size: "60x50", fallback: "no_image.jpg") %>
                 <%= cart_item.item.name %>
               </td>
               <td class="text-right">
-                ¥<%= ((cart_item.items.price * 1.1).floor).to_s(:delimited, delimiter: ',') %>
+                ¥<%= ((cart_item.item.price * 1.1).floor).to_s(:delimited, delimiter: ',') %>
               </td>
               <td class="text-right">
                   <%= cart_item.amount %>
               </td>
               <td class="text-right">
-                ¥<%= ((cart_item.items.price * 1.1).floor * cart_item.amount).to_s(:delimited, delimiter: ',') %>
+                ¥<%= ((cart_item.item.price * 1.1).floor * cart_item.amount).to_s(:delimited, delimiter: ',') %>
               </td>
             </tr>
           <% end %>
