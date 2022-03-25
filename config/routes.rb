@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
 
+  scope module: 'customers' do
+    root to: "homes#top"
+    resources :items, only: [:show, :index]
+  end
+
   get "home/about"=>"homes#about"
-  patch 'customers/quit' => 'customers#out', as: 'out'
-  resource :customers, only: [:show, :edit, :update]
-  resources :shipping_addresses, only: [:index, :edit, :create, :update, :destroy]
-  resources :orders, only: [:index, :show]
+
 
   devise_for :customers, controllers: {
   sessions:      'customers/sessions',
@@ -18,6 +20,17 @@ Rails.application.routes.draw do
   registrations: 'admins/registrations'
 }
 
+
+  namespace :customers do
+    resources :genres, only: [:show]
+    resources :orders
+    resources :cart_items, only: [:index, :create, :update, :destroy]
+    delete 'cart_items' => 'cart_items#all_destroy', as: 'all_destroy'
+    resources :orders, only: [:create, :new, :index, :show]
+    resources :shipping_addresses, only: [:index, :create, :destroy, :edit, :update]
+    resource :customers, only: [:show, :edit, :update]
+    patch 'customers/quit' => 'customers#out', as: 'out'
+  end
 
 
 #会員側のルーティング
