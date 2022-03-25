@@ -11,13 +11,12 @@ class CustomersController < ApplicationController
   end
 
   def out
-    current_customer.update(is_deleted: true)
+    @customer=current_customer
+    @customer.update(is_deleted: true)
     reset_session
-    flash[:notice] = "退会処理を実行いたしました"
-    redirect_to new_customer_registration_path
+    flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております"
+    redirect_to new_customer_session_path
   end
-
- 
 
   private
   def customer_params

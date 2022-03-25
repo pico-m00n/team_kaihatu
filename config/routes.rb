@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
 
-  scope module: 'customers' do
-    root to: "homes#top"
-    resources :items, only: [:show, :index]
-  end
-
+#namespaceだと上手く作動しない
+  resources :genres, only: [:show]
+  resources :orders
+  resources :cart_items, only: [:index, :create, :update, :destroy]
+  delete 'cart_items' => 'cart_items#all_destroy', as: 'all_destroy'
+  resources :orders, only: [:create, :new, :index, :show]
+  resources :shipping_addresses, only: [:index, :create, :destroy, :edit, :update]
+  resource :customers, only: [:show, :edit, :update]
+  patch 'customers/quit' => 'customers#out', as: 'out'
+  root to: "homes#top"
+  resources :items, only: [:show, :index]
   get "home/about"=>"homes#about"
 
 
@@ -19,18 +25,6 @@ Rails.application.routes.draw do
   passwords:     'admins/passwords',
   registrations: 'admins/registrations'
 }
-
-
-  namespace :customers do
-    resources :genres, only: [:show]
-    resources :orders
-    resources :cart_items, only: [:index, :create, :update, :destroy]
-    delete 'cart_items' => 'cart_items#all_destroy', as: 'all_destroy'
-    resources :orders, only: [:create, :new, :index, :show]
-    resources :shipping_addresses, only: [:index, :create, :destroy, :edit, :update]
-    resource :customers, only: [:show, :edit, :update]
-    patch 'customers/quit' => 'customers#out', as: 'out'
-  end
 
 
 #会員側のルーティング
