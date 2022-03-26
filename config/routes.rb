@@ -20,18 +20,19 @@ Rails.application.routes.draw do
   registrations: 'customers/registrations'
 }
 
-  devise_for :admins, controllers: {
+#ふっちー
+  devise_for :admins, skip:[:registrations, :passwords], controllers: {
   sessions:      'admins/sessions',
-  passwords:     'admins/passwords',
-  registrations: 'admins/registrations'
 }
 
 
-#会員側のルーティング
   namespace :admins do
     resources :customers, only: [:index, :show, :edit, :update]
     resources :orders, only: [:index, :show, :update]
     get 'orders/show' => 'orders#show'
+    #ふっちー
+    resources :genres, only: [:index, :edit, :create, :update]
+    resources :items, only: [:index, :edit, :new, :show, :create, :update]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
