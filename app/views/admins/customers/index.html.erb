@@ -16,7 +16,12 @@
         <% @customers.each do |customer| %>
           <tbody>
             <td><%= customer.id %></td>
-            <td><%= link_to customer.name_family, admins_customers_path(customer.id) %><%= link_to customer.name_first, admins_customers_path(customer.id) %></td>
+            <td>
+              <%= link_to admins_customer_path(customer.id) do %>
+                <%= customer.name_family %>
+                <%= customer.name_first %>
+              <% end %>
+            </td>
             <td><%= customer.email %></td>
             <td><%# 会員ステータス %></td>
           </tbody>
