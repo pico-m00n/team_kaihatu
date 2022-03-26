@@ -1,4 +1,4 @@
-class Customers::CartItemsController < ApplicationController
+class CartItemsController < ApplicationController
       before_action :authenticate_customer!
 
 
@@ -13,8 +13,8 @@ class Customers::CartItemsController < ApplicationController
     @cart_item.item_id = params[:item_id]
 
     if @cart_item.save
-      flash[:notice] = "#{@cart_item.item.name}をカートに追加しました。"
-      redirect_to customers_cart_items_path
+      flash[:notice] = "@cart_item.item.nameをカートに追加しました。"
+      redirect_to cart_items_path
     else
       flash[:alert] = "個数を選択してください"
       render "customers/items/show"
