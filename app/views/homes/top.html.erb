@@ -18,7 +18,7 @@
                 <% @items.last(4).each do |item| %>
                     <div class="col-md-3" style="padding-right: 0px; padding-left: 0px;">
                         <%= link_to item_path(item.id) do %>
-                            <%= attachment_image_tag item, :image, :fill, 180, 125, format: 'jpeg' %><br>
+                            <%= image_tag item.image, size: "200x200" %><br>
                             <%= item.name %><br>
                             ¥<%= item.price.to_s(:delimited, delimiter: ',') %>
                         <% end %>

@@ -9,7 +9,7 @@ class ItemsController < ApplicationController
 
  def show
   @item = Item.find(params[:id])
-  @cart_item = Cart_Item.new
+  @cart_item = CartItem.new
   @genres = Genre.all
  end
 

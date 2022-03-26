@@ -4,16 +4,17 @@ class Customers::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
   before_action :reject_customer, only: [:create]
 
+
  protected
   def reject_customer
-　@customer = Customer.find_by(email: params[:customer][:email])
-      return if !@customer
-      if @customer.valid_password?(params[:customer][:password]) && (@customer.is_deleted == true)
-        flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
-        redirect_to new_customer_registration_path
-      else
-        flash[:notice] = "必須項目を入力してください。"
-      end
+    @customer = Customer.find_by(email: params[:customer][:email])
+    return if !@customer
+    if @customer.valid_password?(params[:customer][:password]) && (@customer.is_deleted == true)
+      flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
+      redirect_to new_customer_registration_path
+    else
+      flash[:notice] = "必須項目を入力してください。"
+    end
   end
 
 
