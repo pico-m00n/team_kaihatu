@@ -23,7 +23,11 @@
 
         <tr>
           <td class="font-weight-bold">支払方法</td>
-          <td><td><%= @order.payment %></td></td>
+          <% if @order.payment_method == 0 %>
+            <td>クレジットカード</td>
+          <% else %>
+            <td>銀行振込</td>
+          <% end %>
         </tr>
 
         <tr>
@@ -55,7 +59,7 @@
             <td><%= order_detail.item.name %></td>
             <td><%= (order_detail.item.price * 1.1).floor %></td>
             <td><%= order_detail.amount %></td>
-            <td><%#= (order_detail.item.price * order_detail.amount * 1.1).floor %></td>
+            <td><%= (order_detail.item.price * order_detail.amount * 1.1).floor %></td>
             <td>
               <%= form_for (order_detail), url: admins_item_path(order_detail, order_id: @order.id) do |f| %>
                 <%= f.select :item_status, [["着手不可", "着手不可"], ["製作待ち","製作待ち"], ["製作中","製作中"], ["製作完了","製作完了"]] %>
