@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new
 		@customer = current_customer
-		@addresses = ShippingAddress.where(customer_id: current_customer.id)
+		@addresses = ShippingAdress.where(customer_id: current_customer.id)
   end
 
   def create
@@ -15,11 +15,11 @@ class OrdersController < ApplicationController
    	  cart_items = current_customer.cart_items
    	  sum = 0
    	  cart_items.each do |cart_item|
-   	  	sum += (cart_item.item.price * 1.1).floor * cart_item.amount
+   	  	sum += ((cart_item.item.price).to_i * 1.1).floor * (cart_item.amount).to_i
    	  end
 
    	  session[:order][:shipping_cost] = 800
-   	  session[:order][:total_payment] = sum + session[:order][:total_payment]
+   	  session[:order][:total_payment] = sum + session[:order][:shipping_cost]
    	  session[:order][:order_status] = 0
    	  session[:order][:customer_id] = current_customer.id
    	  session[:order][:payment_method] = params[:method].to_i
@@ -41,10 +41,12 @@ class OrdersController < ApplicationController
    	  	session[:order][:shipping_post_code] = params[:shipping_post_code]
    	  	session[:order][:shipping_adress] = params[:shipping_adress]
    	  	session[:order][:shipping_name] = params[:shipping_name]
-      end
+   	  end
+
+   	  redirect_to order_about_path
   end
 
-	def new
+	def about
 		@cart_items = current_customer.cart_items
 		@customer=current_customer
 	end

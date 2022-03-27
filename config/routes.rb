@@ -5,14 +5,15 @@ Rails.application.routes.draw do
   resources :orders
   resources :cart_items, only: [:index, :create, :update, :destroy]
   delete 'cart_items' => 'cart_items#all_destroy', as: 'all_destroy'
-  resources :orders, only: [:create, :new, :index, :show]
+  resources :orders, only: [:create, :new, :index, :show ,]
   resources :shipping_addresses, only: [:index, :create, :destroy, :edit, :update]
   resource :customers, only: [:show, :edit, :update]
   patch 'customers/quit' => 'customers#out', as: 'out'
   root to: "homes#top"
   resources :items, only: [:show, :index]
-  get "/about"=>"homes#about"
-
+  get "home/about"=>"homes#about"
+  get "order/about" => "orders#about"
+  get "order/complete" => "orders#complete"
 
   devise_for :customers, controllers: {
   sessions:      'customers/sessions',
