@@ -50,8 +50,8 @@
     
     <tbody>
       <% @order_details.each do |d| %>
-      <td><%= d.item.name %></td>
-      <td><%= (d.item.price * 1.1).floor %></td>
+      <td><%= d.item_name %></td>
+      <td><%= (d.item_price * 1.1).floor %></td>
       <td><%= d.amount %></td>
       <td><%= ((d.item.price * d.amount) * 1.1).floor %></td>
     </tbody>
