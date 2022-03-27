@@ -4,9 +4,9 @@ class Admins::OrdersController < ApplicationController
   end
 
   def show
-    #@order = Order.find(params[:id])
-    #@custoer = @order.customer
-    #@order_detail = @order.item
-    #@order_details = @order_detail.all
+    @order = Order.find(params[:id])
+    @customer = @order.customer
+    @order_details = @order.order_details.all
   end
+
 end

@@ -30,7 +30,6 @@ Rails.application.routes.draw do
   namespace :admins do
     resources :customers, only: [:index, :show, :edit, :update]
     resources :orders, only: [:index, :show, :update]
-    get 'orders/show' => 'orders#show'
     #ふっちー
     resources :genres, only: [:index, :edit, :create, :update]
     resources :items, only: [:index, :edit, :new, :show, :create, :update]
