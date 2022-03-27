@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   patch 'customers/quit' => 'customers#out', as: 'out'
   root to: "homes#top"
   resources :items, only: [:show, :index]
-  get "home/about"=>"homes#about"
+  get "/about"=>"homes#about"
 
 
   devise_for :customers, controllers: {
