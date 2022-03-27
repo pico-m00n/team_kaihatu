@@ -17,13 +17,17 @@
           <tbody>
             <td><%= customer.id %></td>
             <td>
-              <%= link_to admins_customer_path(customer.id) do %>
+              <%= link_to admins_customer_path(customer.id), class:"text-dark" do %>
                 <%= customer.name_family %>
                 <%= customer.name_first %>
               <% end %>
             </td>
             <td><%= customer.email %></td>
-            <td><%# 会員ステータス %></td>
+            <% if customer.is_deleted == true %>
+              <td class="text-secondary font-weight-bold">退会</td>
+            <% else %>
+              <td class="text-success font-weight-bold">有効</td>
+            <% end %>
           </tbody>
         <% end %>
         <%= paginate @customers %>
