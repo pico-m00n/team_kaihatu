@@ -55,11 +55,11 @@ class OrdersController < ApplicationController
 		order.save
 
 		if session[:new_address]
-			shipping_address = current_customer.shipping_addresses.new
-			shipping_address.post_code = order.shipping_post_code
-			shipping_address.shipping_address = order.shipping_adress
-			shipping_address.shipping_name = order.shipping_name
-			shipping_address.save
+			shipping_adress = current_customer.shipping_adresses.new
+			shipping_adress.shipping_post_code = order.shipping_post_code
+			shipping_adress.shipping_adress = order.shipping_adress
+			shipping_adress.shipping_name = order.shipping_name
+			shipping_adress.save
 			session[:new_address] = nil
 		end
 
