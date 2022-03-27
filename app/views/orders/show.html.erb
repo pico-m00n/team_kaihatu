@@ -19,7 +19,13 @@
     </tr>
     <tr>
       <th>ステータス</th>
-      <th><%= @order.order_status %></th>
+      <th>
+        <% if @order.order_status == true %>
+          <p>販売停止中</p>
+        <% else %>
+          <p>入金確認</p>
+        <% end %>
+      </th>
     </tr>
   </table>
 
