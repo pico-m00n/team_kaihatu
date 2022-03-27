@@ -1,28 +1,30 @@
-<h2>配送先編集</h2>
-  <%= form_with model:@shipping_addresses, url: shipping_address_path, local:true do |f| %>
-     <table class="table table-borderless">
-        <tbody>
+<div class="container">
+  <h2>配送先編集</h2>
+    <%= form_with model:@shipping_addresses, url: shipping_address_path, local:true do |f| %>
+       <table class="table table-borderless">
+          <tbody>
 
-          <tr>
-            <td><%= f.label :郵便番号 %></td>
-            <td><%= f.number_field :shipping_post_code %></td>
-          </tr>
+            <tr>
+              <td><%= f.label :郵便番号 %></td>
+              <td><%= f.number_field :shipping_post_code %></td>
+            </tr>
 
-          <tr>
-            <td><%= f.label :住所 %></td>
-            <td><%= f.text_field :shipping_adress %></td>
-          </tr>
+            <tr>
+              <td><%= f.label :住所 %></td>
+              <td><%= f.text_field :shipping_adress %></td>
+            </tr>
 
-          <tr>
-            <td><%= f.label :宛名 %></td>
-            <td><%= f.text_field :shipping_name %></td>
-          </tr>
+            <tr>
+              <td><%= f.label :宛名 %></td>
+              <td><%= f.text_field :shipping_name %></td>
+            </tr>
 
-       </tbody>
-      </table>
+         </tbody>
+        </table>
 
-      <div class="actions">
-        <%= f.submit "変更内容を保存", class: 'btn btn-success' %>
-      </div>
+        <div class="actions">
+          <%= f.submit "変更内容を保存", class: 'btn btn-success' %>
+        </div>
 
-    <% end %>
+      <% end %>
+</div>
