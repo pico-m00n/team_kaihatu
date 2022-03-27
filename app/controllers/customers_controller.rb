@@ -7,7 +7,12 @@ class CustomersController < ApplicationController
 
   def update
     current_customer.update(customer_params)
-    redirect_to customers_path
+    if current_customer.update(customer_params)
+      flash[:success] = "You have edited customer data successfully."
+      redirect_to customers_path
+    else
+      render edit_customers_path
+    end
   end
 
   def out
