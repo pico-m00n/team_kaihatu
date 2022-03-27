@@ -13,7 +13,7 @@
         <h3>オススメ商品</h3>
 
         <div class="col-md-9 col-xs-offset-1">
-            <div class="item--card-content">
+            <div class="item--card-content d-inline-flex">
                 <% @items.last(4).each do |item| %>
                     <div class="col-md-3" style="padding-right: 0px; padding-left: 0px;">
                         <%= link_to item_path(item.id) do %>
