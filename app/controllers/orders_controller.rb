@@ -46,6 +46,7 @@ class OrdersController < ApplicationController
 
 	def new
 		@cart_items = current_customer.cart_items
+		@customer=current_customer
 	end
 
   def complete
@@ -76,8 +77,16 @@ class OrdersController < ApplicationController
   end
 
   def index
+  	@orders=Order.where(customer_id:current_customer)
   end
 
   def show
+  	@order = Order.find(params[:id])
+    @order_details = @order.order_details
   end
+
+   private
+   def order_params
+     params.require(:order).permit(:shipping_cost, :total_payment, :payment_method, :shipping_name, :shipping_adress, :shipping_post_code, :order_status)
+   end
 end

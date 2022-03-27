@@ -19,7 +19,7 @@
     </tr>
     <tr>
       <th>ステータス</th>
-      <th><%= @order.payment_method %></th>
+      <th><%= @order.order_status %></th>
     </tr>
   </table>
   
@@ -49,10 +49,11 @@
     </thead>
     
     <tbody>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <% @order_details.each do |d| %>
+      <td><%= d.item.name %></td>
+      <td><%= (d.item.price * 1.1).floor %></td>
+      <td><%= d.amount %></td>
+      <td><%= ((d.item.price * d.amount) * 1.1).floor %></td>
     </tbody>
   </table>
 </div>
