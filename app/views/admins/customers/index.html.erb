@@ -1,7 +1,7 @@
 <div class="container px-5 px-sm-0">
-  <div class="row">
-    <div class="col">
-      <h2>会員一覧</h2>
+  <div class="row mr-3 d-flex">
+    <h2 class="mx-5 mt-3 px-4 bg-light shadow">会員一覧</h2>
+  </div>
 
       <table class="table">
         <thead class="thead-light">
@@ -17,17 +17,21 @@
           <tbody>
             <td><%= customer.id %></td>
             <td>
-              <%= link_to admins_customer_path(customer.id) do %>
+              <%= link_to admins_customer_path(customer.id), class:"text-dark" do %>
                 <%= customer.name_family %>
                 <%= customer.name_first %>
               <% end %>
             </td>
             <td><%= customer.email %></td>
-            <td><%# 会員ステータス %></td>
+            <% if customer.is_deleted == true %>
+              <td class="text-secondary font-weight-bold">退会</td>
+            <% else %>
+              <td class="text-success font-weight-bold">有効</td>
+            <% end %>
           </tbody>
         <% end %>
         <%= paginate @customers %>
       </table>
-    </div>
+
   </div>
 </div>

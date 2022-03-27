@@ -6,7 +6,7 @@
 
 
         <ul class="navbar-nav ml-auto text-dark">
-              <% if admin_signed_in? %><!--adminでログインされている-->
+          <% if admin_signed_in? %><!--adminでログインされている-->
                 <li class="px-2"><%= link_to '商品一覧' , admins_items_path %></li>
                 <li class="px-2"><%= link_to '会員一覧' , admins_customers_path %></li>
                 <li class="px-2"><%= link_to '注文履歴一覧' , admins_orders_path %></li>
@@ -19,7 +19,7 @@
                 <li class="px-2"><%= link_to 'カート' , cart_items_path %></li>
                 <li class="pl-2"><%= link_to 'ログアウト' , destroy_customer_session_path, method: :delete %></li>
               <% else %><!--ログインされていない-->
-                <li class="px-2"><%= link_to 'About' , about_path %></li>
+                <li class="px-2"><%= link_to 'About' , home_about_path %></li>
                 <li class="px-2"><%= link_to '商品一覧' , items_path %></li>
                 <li class="px-2"><%= link_to '新規登録' , new_customer_registration_path %></li>
                 <li class="pl-2"><%= link_to 'ログイン' , new_customer_session_path %></li>

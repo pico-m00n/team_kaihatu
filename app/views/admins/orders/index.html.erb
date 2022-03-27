@@ -1,28 +1,28 @@
 <div class="container px-5 px-sm-0">
-  <div class="row">
-    <div class="col">
-      <h2>注文履歴一覧</h2>
+  <div class="row mr-3 d-flex">
+    <h2 class="mx-5 mt-3 px-4 bg-light shadow">注文履歴一覧</h2>
+  </div>
+  <div class="col">
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th>購入日時</th>
+          <th>購入者</th>
+          <th>注文個数</th>
+          <th>注文ステータス</th>
+        </tr>
+      </thead>
 
-      <table class="table">
-        <thead class="thead-light">
-          <tr>
-            <th>購入日時</th>
-            <th>購入者</th>
-            <th>注文個数</th>
-            <th>注文ステータス</th>
-          </tr>
-        </thead>
-
-        <% @orders.each do |order| %>
-          <tbody>
-            <td><%= order.created_at %></td>
-            <td><%= order.customer.family_name %><%= order.customer.first_name %></td>
-            <td><%= order.order_detail.amount %></td>
-            <td><%# 注文ステータス表示 %></td>
-          </tbody>
-        <% end %>
-        <%= paginate @orders %>
-      </table>
-    </div>
+      <% @orders.each do |order| %>
+        <tbody>
+          <td><%= link_to order.created_at.strftime("%Y-%m-%d %H:%M"), admins_order_path(order.id), class:"text-dark" %></td>
+          <td><%= order.customer.name_family %><%= order.customer.name_first %></td>
+          <td><%= order.order_details.sum(:amount) %></td>
+          <td><%= order.order_status %></td>
+        </tbody>
+      <% end %>
+      <%= paginate @orders %>
+    </table>
   </div>
 </div>
+
