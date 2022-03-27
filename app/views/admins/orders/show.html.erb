@@ -1,6 +1,8 @@
 <div class="container">
-  <h2>注文履歴詳細</h2>
-  <div class="row">
+  <div class="row mr-3 d-flex">
+    <h2 class="mx-5 mt-3 px-4 bg-light shadow">注文履歴詳細</h2>
+  </div>
+  <div class="col">
     <table class="table table-borderless">
       <tbody>
 
@@ -66,26 +68,25 @@
     </div>
 
     <div class="col">
-        <table class="table table-borderless">
-          <tbody>
+      <table class="table table-borderless">
+        <tbody>
 
-            <tr>
-              <td class="font-weight-bold">商品合計</td>
-              <td><%# 合計金額（送料抜き）表示 %></td>
-            </tr>
+          <tr>
+            <td class="font-weight-bold">商品合計</td>
+            <td><%# 合計金額（送料抜き）表示 %></td>
+          </tr>
 
-            <tr>
-              <td class="font-weight-bold">送料</td>
-              <td><%# shipping_cost %></td>
-            </tr>
+          <tr>
+            <td class="font-weight-bold">送料</td>
+            <td><%# shipping_cost %></td>
+          </tr>
 
-            <tr>
-              <td class="font-weight-bold">請求金額合計</td>
-              <td><%# total_payment %></td>
-            </tr>
+          <tr>
+            <td class="font-weight-bold">請求金額合計</td>
+            <td><%# total_payment %></td>
+          </tr>
 
-          </tbody>
-        </table>
+        </tbody>
+      </table>
       </div>
-  </div>
 </div>

@@ -1,6 +1,8 @@
 <div class="container px-5 px-sm-0">
-  <h2><%= @customer.name_family %><%= @customer.name_first %>さんの会員情報編集</h2>
-  <div class="row">
+  <div class="row mr-3 d-flex">
+    <h2 class="mx-5 mt-3 px-4 bg-light shadow"><%= @customer.name_family %><%= @customer.name_first %>さんの会員情報編集</h2>
+  </div>
+  <div class="col">
     <%= form_with model: @customer, url: admins_customer_path(@customer), method: :patch, local:true do |f| %>
       <table class="table table-borderless">
         <tbody>
