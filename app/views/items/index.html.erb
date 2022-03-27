@@ -7,24 +7,24 @@
 
      <h2 class="font-weight-bold">商品一覧(全<%= @items_all.count %>件)</h2>
 	     <div class="ml-3">
+		  </div>
 
 
-		<div class="row">
-	  	<% @items.each do |item| %>
+	  <div class="row">
+	    <% @items.each do |item| %>
         <div class="col-3">
-			   <%= link_to item_path(item.id) do %>
-			  	 <%= image_tag item.image, size:"200x200" %><br>
-			  	 <%= item.name %>
-			  	 ¥<%= item.price.to_s(:delimited, delimiter: ',') %>
-			   <% end %>
-		  <% end %>
-		</div>
-	</div>
+	  		  <%= link_to item_path(item.id) do %>
+	  		  	<%= image_tag item.image, size:"200x200" %><br>
+	  		     <%= item.name %>
+	  		 	  ¥<%= item.price.to_s(:delimited, delimiter: ',') %>
+	  		  <% end %>
+	  	  </div>
+	    <% end %>
+	  </div>
 
-		</div>
 	</div>
 	<div style="text-align: center;"><%= paginate @items %></div>
 	</div>
-	</div>
+</div>
 
 

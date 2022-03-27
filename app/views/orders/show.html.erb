@@ -15,7 +15,13 @@
     </tr>
     <tr>
       <th>支払方法</th>
-      <th><%= @order.payment_method %></th>
+      <th>
+        <% if @order.payment_method == 0 %>
+          <p>クレジットカード</p>
+        <% else %>
+          <p>銀行振り込み</p>
+        <% end %>
+      </th>
     </tr>
     <tr>
       <th>ステータス</th>
