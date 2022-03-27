@@ -2,7 +2,7 @@ class ShippingAddressesController < ApplicationController
 
   def index
     @shipping_address=ShippingAdress.new
-    @shipping_addresses=ShippingAdress.all
+    @shipping_addresses=current_customer.shipping_adresses
   end
 
   def create
