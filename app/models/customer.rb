@@ -7,9 +7,9 @@ class Customer < ApplicationRecord
  #なぜ↓
  #enum is_deleted: { validity: 0, quit: 1 }
 
-  has_many :shipping_adresses
-  has_many :orders
-  has_many :cart_items
+  has_many :shipping_adresses, dependent: :destroy
+  has_many :orders, dependent: :destroy
+  has_many :cart_items, dependent: :destroy
 
 
 end

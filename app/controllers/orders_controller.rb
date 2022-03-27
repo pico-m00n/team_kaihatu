@@ -41,7 +41,7 @@ class OrdersController < ApplicationController
    	  	session[:order][:shipping_post_code] = params[:shipping_post_code]
    	  	session[:order][:shipping_adress] = params[:shipping_adress]
    	  	session[:order][:shipping_name] = params[:shipping_name]
-   end
+      end
   end
 
 	def new
