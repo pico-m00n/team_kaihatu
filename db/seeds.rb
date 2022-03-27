@@ -10,69 +10,22 @@ Admin.create!(
   password: 'testpass',
  )
 
- # GenreModel(4)
+# GenreModel(4)
 Genre.create!(
               name: "ケーキ",
               is_enabled: true
             )
 
-  #ItemModel
-Item.create!(
-              genre_id: 1,
-              image_id: nil,
-              name: "洋梨のチーズタルト",
-              introduction: "北海道産の最高級カッテージチーズ＆最高級生クリームを贅沢に使用。",
-              price: 1000,
-              status: "販売可"
-              )
-Item.create!(
-              genre_id: 1,
-              image_id: nil,
-              name: "いちごのショートケーキ",
-              introduction: "あまおうを贅沢に使用。",
-              price: 2000,
-              status: "販売可"
-              )
-Item.create!(
-              genre_id: 1,
-              image_id: nil,
-              name: "漢方のどあめ",
-              introduction: "のどの痛みを緩和。",
-              price: 300,
-              status: "販売可"
-              )
-
- # OrderModel
- Order.create!(
-               shipping_name: "佐藤一",
-               shipping_post_code: "222-2222",
-               shipping_adress: "東京都 新宿区 新宿1丁目",
-               payment_method: 1,
-               shipping_cost: 800,
-               total_payment: 3400,
-               order_status: 1
-               )
-
-
-# OrderDetailModel
- OrderDetail.create!(
-                       order_id: 1,
-                       item_id: 1,
-                       total_price: 1000,
-                       amount: 1,
-                       item_status: 1,
-                       )
- OrderDetail.create!(
-                       order_id: 1,
-                       item_id: 2,
-                       total_price: 2000,
-                       amount: 1,
-                       item_status: 1,
-                       )
- OrderDetail.create!(
-                       order_id: 1,
-                       item_id: 3,
-                       total_price: 300,
-                       amount: 1,
-                       item_status: 1,
-                       )
+Genre.create!(
+              name: "プリン",
+              is_enabled: true
+            )
+Genre.create!(
+              name: "焼き菓子",
+              is_enabled: true
+            )
+Genre.create!(
+              name: "キャンディ",
+              is_enabled: true
+            )
+            
